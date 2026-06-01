@@ -10,8 +10,9 @@ export default function AppForm({ route, navigation }) {
   const [id, setId] = useState(null);
 
   useEffect(() => {
-    if (route.params) {
-      const { id, descricao, quantidade } = route.params;
+    const params = route.params || route;
+    if (params && params.id) {
+      const { id, descricao, quantidade } = params;
       setId(id);
       setDescricao(descricao);
       setQuantidade(String(quantidade));
